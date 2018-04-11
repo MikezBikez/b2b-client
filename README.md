@@ -12,6 +12,7 @@ npm start
 - Convert "add volunteer" component and add to PeopleList
 - Add person/volunteer search to CheckinList and PeopleList components
 - Make ConfirmCheckin and ConfirmCheckout modals
+- Add Redux or Apollo App State
 
 # Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
