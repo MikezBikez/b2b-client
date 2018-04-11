@@ -1,4 +1,4 @@
-# Attendeance App 2.8
+# Attendance App 2.8
 This is a port of the b2b-gql-react attendance app. Sepcifically the react and apollo client which was css based. This project is about porting the client to semantic-ui-react the intention being a similar look and feel to the jQuery version of semantic-ui used by the original meteor version.
 
 It's a bit fugly (but functioning) at the mo. It assumes you are running the dockerised mongDb and API.
@@ -9,9 +9,9 @@ npm start
 ```
 
 ## To Do's
-- Cleanup the "gang" component by renaming to volunteers and convert "add volunteer" component
-- Fix the menu bar so the active item is based on the displayed route
+- Convert "add volunteer" component and add to PeopleList
 - Add person/volunteer search to CheckinList and PeopleList components
+- Make ConfirmCheckin and ConfirmCheckout modals
 
 # Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
