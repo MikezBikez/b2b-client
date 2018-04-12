@@ -1,7 +1,6 @@
 import React from 'react'
 import { Menu, Segment } from 'semantic-ui-react'
 
-
 export default class Header extends React.PureComponent {
 
   state = {activeItem: this.props.match.location}
@@ -10,7 +9,7 @@ export default class Header extends React.PureComponent {
     
     let activeItem = ''
 
-    if (nextProps.match.url.endsWith('people/list') || this.props.match.url.endsWith('people/list')) {activeItem = 'vols'}
+    if (nextProps.match.url.endsWith('people/list')) {activeItem = 'vols'}
     if (nextProps.match.url.endsWith('attendance')) {activeItem = 'attend'}
     if (nextProps.match.url.endsWith('people/checkIn')) {activeItem = 'checkin'}
     if (nextProps.match.url.endsWith('people/whosIn')) {activeItem = 'whosin'}
