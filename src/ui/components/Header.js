@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import { Menu, Segment } from 'semantic-ui-react'
 
 
-export default class Header extends PureComponent {
-  
+export default class Header extends React.PureComponent {
+
   state = {activeItem: this.props.match.location}
 
   static getDerivedStateFromProps(nextProps, prevState) {
