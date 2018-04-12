@@ -3,30 +3,14 @@ import { Menu, Segment } from 'semantic-ui-react'
 
 
 export default class Header extends PureComponent {
+  
   state = {activeItem: this.props.match.location}
 
-  onApp = () => this.props.history.push('/attendance')
-  onWhosIn = () => this.props.history.push('/people/whosIn')
-  onCheckin = () => this.props.history.push('/people/checkIn')
-  onPeopleList = () => this.props.history.push('/people/list')
-  onHome = () => this.props.history.push('/')
-
-  handleItemClick = (e, { name }) => {
-
-    this.setState({ activeItem: name })
-
-    if (name==='logo') {this.onHome()}
-    if (name==='vols') {this.onPeopleList()}
-    if (name==='attend') {this.onApp()}
-    if (name==='checkin') {this.onCheckin()}
-    if (name==='whosin') {this.onWhosIn()}
-
-  }
-
-  componentWillReceiveProps = (nextProps) => {
+  static getDerivedStateFromProps(nextProps, prevState) {
+    
     let activeItem = ''
 
-    if (nextProps.match.url.endsWith('people/list')) {activeItem = 'vols'}
+    if (nextProps.match.url.endsWith('people/list') || this.props.match.url.endsWith('people/list')) {activeItem = 'vols'}
     if (nextProps.match.url.endsWith('attendance')) {activeItem = 'attend'}
     if (nextProps.match.url.endsWith('people/checkIn')) {activeItem = 'checkin'}
     if (nextProps.match.url.endsWith('people/whosIn')) {activeItem = 'whosin'}
@@ -47,7 +31,25 @@ export default class Header extends PureComponent {
     && this.props.match.url.endsWith('attendance') ) 
       {activeItem = 'attend'}    
 
-    this.setState({ activeItem })
+    return { activeItem }
+  }
+
+  onApp = () => this.props.history.push('/attendance')
+  onWhosIn = () => this.props.history.push('/people/whosIn')
+  onCheckin = () => this.props.history.push('/people/checkIn')
+  onPeopleList = () => this.props.history.push('/people/list')
+  onHome = () => this.props.history.push('/')
+
+  handleItemClick = (e, { name }) => {
+
+    this.setState({ activeItem: name })
+
+    if (name==='logo') {this.onHome()}
+    if (name==='vols') {this.onPeopleList()}
+    if (name==='attend') {this.onApp()}
+    if (name==='checkin') {this.onCheckin()}
+    if (name==='whosin') {this.onWhosIn()}
+
   }
   
   render () {
