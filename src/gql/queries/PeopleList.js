@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query PeopleList {
-    people{
+  query ($term: String) {
+    people(searchTerm:$term){
       id
       name
       surname
