@@ -2,11 +2,13 @@ import React from 'react'
 import { Menu, Segment } from 'semantic-ui-react'
 
 export default class Header extends React.PureComponent {
-
-  state = {activeItem: this.props.match.location}
+  constructor(props, context) {
+    super(props)
+    this.state = {activeItem: this.props.match.location}
+  }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    
+
     let activeItem = ''
 
     if (nextProps.match.url.endsWith('people/list')) {activeItem = 'vols'}
@@ -14,20 +16,16 @@ export default class Header extends React.PureComponent {
     if (nextProps.match.url.endsWith('people/checkIn')) {activeItem = 'checkin'}
     if (nextProps.match.url.endsWith('people/whosIn')) {activeItem = 'whosin'}
 
-    if (nextProps.match.url.endsWith('confirmCheckin') 
-    && this.props.match.url.endsWith('people/checkIn')) 
+    if (nextProps.match.url.endsWith('confirmCheckin') ) 
       {activeItem = 'checkin'}
 
-    if (nextProps.match.url.endsWith('confirmCheckin') 
-    && this.props.match.url.endsWith('attendance') ) 
+    if (nextProps.match.url.endsWith('confirmCheckin') ) 
       {activeItem = 'attend'}
 
-    if (nextProps.match.url.endsWith('confirmCheckout') 
-    && this.props.match.url.endsWith('people/whosIn')) 
+    if (nextProps.match.url.endsWith('confirmCheckout') ) 
       {activeItem = 'whosin'}
 
-    if (nextProps.match.url.endsWith('confirmCheckout') 
-    && this.props.match.url.endsWith('attendance') ) 
+    if (nextProps.match.url.endsWith('confirmCheckout') )
       {activeItem = 'attend'}    
 
     return { activeItem }

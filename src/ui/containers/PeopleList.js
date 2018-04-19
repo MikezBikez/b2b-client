@@ -7,27 +7,40 @@ import Avatar from '../components/Avatar'
 const PeopleList = (props) => {
 
   const renderItems = (people) => {
-    return people.map( ({ id, name, surname, isCheckedIn, avatar}) => 
-      <List.Item key={id}>            
-        <Avatar
-          _id={id}
-          firstName={name}
-          lastName={surname}
-          isCheckedin={isCheckedIn}
-          fileName={avatar}
-        />
-      </List.Item> 
+    return people.map( ({ id, name, surname, isCheckedIn, avatar }) => {
+ 
+      return <List.Item key={id} onClick={() => props.onTapAction(id)}>
+        {props.onTapAction !== null &&
+          <Avatar
+            _id={id}
+            firstName={name}
+            lastName={surname}
+            isCheckedin={isCheckedIn}
+            fileName={avatar}
+          />
+        }            
+        {props.onTapAction === null &&
+          <Avatar
+            _id={id}
+            firstName={name}
+            lastName={surname}
+            isCheckedin={isCheckedIn}
+            fileName={avatar}
+          />
+        }  
+      </List.Item> }
     )
   }
 
-    if (props.data.loading) return <Loader active inline='centered'/>
+  if (props.data.loading) return <Loader active inline='centered'/>
 
-    return (
-      <List size='massive' relaxed='very'>
-        {renderItems(props.data.people)}
-      </List>
-    )
+  return (
+    <List size='massive' relaxed='very'>
+      {renderItems(props.data.people)}
+    </List>
+  )
 
 }
 
-export default graphql(query, { options: (props) => { return {variables: {term: props.searchTerm} }} })(PeopleList)
+export default graphql(query, { options: (props) => { 
+  return {variables: {term: props.searchTerm, isCheckedIn: props.isCheckedIn} }} })(PeopleList)

@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export default gql`
-  query ($term: String) {
-    people(searchTerm:$term){
+  query ($term: String, $isCheckedIn: Boolean) {
+    people(searchTerm:$term, isCheckedIn:$isCheckedIn){
       id
       name
       surname
