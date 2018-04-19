@@ -34,7 +34,7 @@ export default class SearchablePeople extends React.PureComponent {
 
         </Grid.Row>  
 
-        <Grid.Row stretched padded >
+        <Grid.Row stretched padded='horizontally'  >
           <Grid.Column>
             <PeopleList searchTerm={this.state.searchTerm} isCheckedIn={this.props.isCheckedIn} onTapAction={this.props.onTapAction}/>
           </Grid.Column>
