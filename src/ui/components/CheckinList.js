@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
-import query from '../../gql/queries/notCheckedInList'
+import query from '/src/gql/queries/notCheckedInList'
 import { Grid, Loader, List, Header } from 'semantic-ui-react'
 import Avatar from './Avatar'
 import { withRouter } from 'react-router-dom'
@@ -12,7 +12,7 @@ const CheckinList = (props) => {
   }
   
   const renderItems = (notCheckedIn) =>
-    notCheckedIn.map( ({ id, name, surname, isCheckedIn, avatar}) => 
+    (notCheckedIn  || []).map( ({ id, name, surname, isCheckedIn, avatar}) => 
       <List.Item key={id} onClick={ () => handleCheckin(id) } >            
         <Avatar
           _id={id}

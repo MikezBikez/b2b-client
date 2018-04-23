@@ -10,7 +10,7 @@ const CheckedInList = (props) => {
   const handleCheckout = (id) => props.history.push(`/people/${id}/confirmCheckout`)
   
   const renderItems = (checkedIn) =>
-    checkedIn.map( ({ id, name, surname, isCheckedIn, avatar}) => 
+    (checkedIn  || []).map( ({ id, name, surname, isCheckedIn, avatar}) => 
       <List.Item key={id} onClick={ () => handleCheckout(id) } >            
         <Avatar
           _id={id}
