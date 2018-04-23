@@ -11,7 +11,7 @@ import App from './ui/components/App'
 
 const client = new ApolloClient({
   link: createHttpLink({ 
-  uri: 'http://localhost:3000',
+  uri: 'http://localhost:4000',
   opts: {
     credentials: 'same-origin',
   }}
