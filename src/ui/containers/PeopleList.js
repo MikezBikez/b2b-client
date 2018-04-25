@@ -7,7 +7,7 @@ import Avatar from '../components/Avatar'
 const PeopleList = (props) => {
 
   const renderItems = (people) => {
-    return people.map( ({ id, name, surname, isCheckedIn, avatar }) => {
+    return (people || []).map( ({ id, name, surname, isCheckedIn, avatar }) => {
  
       return <List.Item key={id} onClick={() => props.onTapAction(id)}>
         {props.onTapAction !== null &&
