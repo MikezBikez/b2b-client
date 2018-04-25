@@ -1,9 +1,35 @@
-import React, {PureComponent} from 'react'
+import React from 'react'
 import { Menu, Segment } from 'semantic-ui-react'
 
+export default class Header extends React.PureComponent {
+  constructor(props, context) {
+    super(props)
+    this.state = {activeItem: this.props.match.location}
+  }
 
-export default class Header extends PureComponent {
-  state = {}
+  static getDerivedStateFromProps(nextProps, prevState) {
+
+    let activeItem = ''
+
+    if (nextProps.match.url.endsWith('people/list')) {activeItem = 'vols'}
+    if (nextProps.match.url.endsWith('attendance')) {activeItem = 'attend'}
+    if (nextProps.match.url.endsWith('people/checkIn')) {activeItem = 'checkin'}
+    if (nextProps.match.url.endsWith('people/whosIn')) {activeItem = 'whosin'}
+
+    if (nextProps.match.url.endsWith('confirmCheckin') ) 
+      {activeItem = 'checkin'}
+
+    if (nextProps.match.url.endsWith('confirmCheckin') ) 
+      {activeItem = 'attend'}
+
+    if (nextProps.match.url.endsWith('confirmCheckout') ) 
+      {activeItem = 'whosin'}
+
+    if (nextProps.match.url.endsWith('confirmCheckout') )
+      {activeItem = 'attend'}    
+
+    return { activeItem }
+  }
 
   onApp = () => this.props.history.push('/attendance')
   onWhosIn = () => this.props.history.push('/people/whosIn')
@@ -16,28 +42,29 @@ export default class Header extends PureComponent {
     this.setState({ activeItem: name })
 
     if (name==='logo') {this.onHome()}
-    if (name==='app') {this.onApp()}
-    if (name==='whosin') {this.onWhosIn()}
+    if (name==='vols') {this.onPeopleList()}
+    if (name==='attend') {this.onApp()}
     if (name==='checkin') {this.onCheckin()}
-    if (name==='gang') {this.onPeopleList()}
-      
-  }
+    if (name==='whosin') {this.onWhosIn()}
 
+  }
+  
   render () {
+
     const { activeItem } = this.state
 
     return (
       <Segment>
-        <Menu fixed='top' inverted borderless>
+        <Menu fixed='top' inverted borderless color='green'>
           <Menu.Item as='h1' 
             name='logo' 
             content='BACK 2 BIKES' 
             active={activeItem === 'logo'}
             onClick={this.handleItemClick}/>
           <Menu.Item 
-            name='app'
-            content='The App' 
-            active={activeItem === 'app'}
+            name='attend'
+            content='Attendance' 
+            active={activeItem === 'attend'}
             onClick={this.handleItemClick}/>
           <Menu.Item 
             name='whosin'
@@ -50,9 +77,9 @@ export default class Header extends PureComponent {
             active={activeItem === 'checkin'}
             onClick={this.handleItemClick}/>
           <Menu.Item 
-            name='gang' 
-            content='The Gang' 
-            active={activeItem === 'gang'}
+            name='vols' 
+            content='Volunteers' 
+            active={activeItem === 'vols'}
             onClick={this.handleItemClick}/>
         </Menu> 
       </Segment>

@@ -15,8 +15,8 @@ const ConfirmCheckin = (props) => {
     props.mutate({
       variables: {id},
       refetchQueries: [{ query: nextQuery }, { query: otherQuery }]
-    })
-    .then(props.history.push(`/people/whosIn`))    
+    })  
+    .then(props.history.goBack())
   }
 
   if (props.data.loading) {return <Loader active inline='centered'/>}

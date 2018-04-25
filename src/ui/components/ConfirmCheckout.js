@@ -14,7 +14,7 @@ const handleCheckout = (id) => {
     variables: {id},
     refetchQueries: [{ query: nextQuery }, { query: otherQuery }]
   })
-  .then(props.history.push(`/people/whosIn`))
+  .then(props.history.goBack())
 }
 
 const handleCancel = () => props.history.goBack()

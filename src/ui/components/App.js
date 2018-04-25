@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Route, Switch, withRouter } from 'react-router-dom'
 
 import Header from './Header'
-import PeopleList from './PeopleList'
+import SearchablePeople from './SearchablePeople'
 import CheckedInList from './CheckedInList'
 import CheckinList from './CheckinList'
 import ConfirmCheckin from './ConfirmCheckin'
@@ -18,7 +18,7 @@ class App extends Component {
         <Route path='*' component={Header}/>
           <Switch>
             <Route path='/attendance' component={AttendanceApp} />
-            <Route path='/people/list' component={PeopleList} />
+            <Route path='/people/list' render={() => <SearchablePeople backgroundColor={'FloralWhite'}/>} />
             <Route path='/people/whosIn' component={CheckedInList} />
             <Route path='/people/checkIn' component={CheckinList} />
             <Route path='/people/:id/confirmCheckin' component={ConfirmCheckin} />
