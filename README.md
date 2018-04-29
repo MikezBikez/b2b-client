@@ -1,4 +1,6 @@
-# Attendance App 2.8
+# Attendance App 2.8 - DEPRECATED
+This client app has been moved into https://github.com/back2bikes/attandance
+
 This is a port of the b2b-gql-react attendance app. Sepcifically the react and apollo client which was css based. This project is about porting the client to semantic-ui-react the intention being a similar look and feel to the jQuery version of semantic-ui used by the original meteor version.
 
 It's a bit fugly (but functioning) at the mo. It assumes you are running the dockerised mongDb and API.
